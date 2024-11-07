@@ -40,7 +40,7 @@ Since this is intended for unit testing, import the module as a development depe
 The module overrrides the module loader and allows the mocking of multiple CommonJS modules.
 
 ```
-$ npm install --save-dev vitest-mockrequire
+$ npm install --save-dev vitest-mock-commonjs
 ```
 
 This module depends on the "latest" version of vitest; the test suite also needs to do that to make
@@ -62,7 +62,7 @@ The package.json over the test-suite should specify "latest" as the version for 
 ### Inclusion in the test suite
 
 Import vitest and this module in the test suite.
-The order of import is not important, vitest-mockrequire will import vi itself to inject the methods.
+The order of import is not important, vitest-mock-commonjs will import vi itself to inject the methods.
 What other exports from vitest you import are up to you, this is just an example:
 
 ```
@@ -70,7 +70,7 @@ import { beforeAll, beforeEach, vi } from 'vitest'
 import 'vitest-mock-commonjs'
 ```
 
-vitest-mockrequire also exports the mock creation functions for direct use, simply import the named functions:
+vitest-mock-commonjs also exports the mock creation functions for direct use, simply import the named functions:
 
 ```
 import { mockForNodeRequire } from 'vitest-mock-commonjs'
@@ -164,7 +164,7 @@ All that is left is checking to see if the function was actually called in the c
 ```
 
 There are test double definitions missing in the example, hinted at by the individual test case above.
-The whole working, stand-alone example that uses vitest-mockrequire and from which
+The whole working, stand-alone example that uses vitest-mock-commonjs and from which
 these examples were pulled can be seen at https://github.com/jmussman/auth0-block-idp-signup. 
 
 ### The code-under-test (CUT)
@@ -192,7 +192,7 @@ await managementClient.users.delete({ id: event.user.user_id });
 ## Implementation (how it works)
 
 vitest fits with ESM very well, while jest fits with CommonJS.
-Because the focus is ESM, vitest-mockrequire is only delivered as an ESM module.
+Because the focus is ESM, vitest-mock-commonjs is only delivered as an ESM module.
 Of course an index.d.ts file is provided for TypeScript compatibility.
 
 ### 
